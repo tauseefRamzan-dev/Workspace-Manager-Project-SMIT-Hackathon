@@ -25,8 +25,10 @@ function LoginPage() {
     if (signupMode) {
       if (!name.trim()) {
         setError('Name is required');
+      } else if (users.some(user => user.email.toLowerCase() === email.trim().toLowerCase())) {
+        setError('An account with this email already exists');
       } else {
-        dispatch(signupUser({ name, email, password }));
+        dispatch(signupUser({ name: name.trim(), email: email.trim(), password }));
         authenticated = true;
       }
     } else {

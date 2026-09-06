@@ -89,7 +89,7 @@ function Navbar() {
                 </Dropdown.Item>
               ))}
               <Dropdown.Divider />
-              <Dropdown.Item href="/settings">
+              <Dropdown.Item onClick={() => navigate('/settings')}>
                 ⚙️ Settings
               </Dropdown.Item>
               <Dropdown.Divider />

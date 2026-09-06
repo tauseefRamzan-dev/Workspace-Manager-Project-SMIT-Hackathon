@@ -7,6 +7,7 @@ import { exportData, importData, resetAllData, saveToLocalStorage } from '../uti
 import { setNotificationPreference } from '../store/slices/notificationSlice';
 import { message, Modal } from 'antd';
 import Navbar from '../components/Navbar';
+import './SettingsPage.css';
 
 function SettingsPage() {
   const dispatch = useDispatch();
@@ -68,18 +69,35 @@ function SettingsPage() {
     dispatch(updateProfile({ [field]: value }));
   };
 
+  const handleSaveProfile = () => {
+    message.success('Profile changes saved');
+  };
+
   return (
-    <div className="min-vh-100 bg-body">
+    <div className="settings-page min-vh-100">
       <Navbar />
       
-      <Container fluid className="p-4">
-        <h2 className="mb-4">⚙️ Settings</h2>
+      <Container fluid className="settings-content px-3 px-lg-5 py-4 py-lg-5">
+        <div className="settings-hero mb-4">
+          <div>
+            <span className="settings-eyebrow">Workspace control center</span>
+            <h1>Settings</h1>
+            <p>Shape your workspace, notifications, and personal data in one place.</p>
+          </div>
+          <div className="settings-identity">
+            <img src={currentUser?.avatar} alt={currentUser?.name} />
+            <div>
+              <strong>{currentUser?.name || 'Workspace member'}</strong>
+              <span>{currentUser?.email || 'No email connected'}</span>
+            </div>
+          </div>
+        </div>
 
         <Row>
-          <Col lg={8}>
-            <Tabs defaultActiveKey="profile" className="mb-4">
+          <Col xl={9}>
+            <Tabs defaultActiveKey="profile" className="settings-tabs mb-4">
               <Tab eventKey="profile" title="Profile">
-                <Card>
+                <Card className="settings-card">
                   <Card.Body>
                     <h5>Profile Information</h5>
                     <hr />
@@ -103,13 +121,13 @@ function SettingsPage() {
                       />
                     </div>
 
-                    <Button variant="primary">Save Changes</Button>
+                    <Button variant="primary" onClick={handleSaveProfile} disabled={!currentUser?.name?.trim()}>Save Changes</Button>
                   </Card.Body>
                 </Card>
               </Tab>
 
               <Tab eventKey="appearance" title="Appearance">
-                <Card>
+                <Card className="settings-card">
                   <Card.Body>
                     <h5>Theme</h5>
                     <hr />
@@ -122,7 +140,7 @@ function SettingsPage() {
                     </div>
                   </Card.Body>
                 </Card>
-                <Card className="mt-3">
+                <Card className="settings-card mt-3">
                   <Card.Body>
                     <h5>Notifications</h5>
                     <hr />
@@ -141,7 +159,7 @@ function SettingsPage() {
               </Tab>
 
               <Tab eventKey="data" title="Data & Privacy">
-                <Card className="mb-3">
+                <Card className="settings-card mb-3">
                   <Card.Body>
                     <h5>Backup & Export</h5>
                     <hr />
@@ -159,7 +177,7 @@ function SettingsPage() {
                   </Card.Body>
                 </Card>
 
-                  <Card className="border-start border-danger border-4">
+                  <Card className="settings-card danger-card border-start border-danger border-4">
                   <Card.Body className="bg-danger-subtle">
                     <h5 className="text-danger">Danger Zone</h5>
                     <hr />

@@ -29,7 +29,9 @@ activityMiddleware.startListening({
   effect: (action, listenerApi) => {
     const state = listenerApi.getState();
     const user = state.auth.currentUser;
-    const taskId = action.payload?.id || action.payload?.taskId || action.payload;
+    const taskId = typeof action.payload === 'string'
+      ? action.payload
+      : action.payload?.id || action.payload?.taskId || null;
     listenerApi.dispatch(addActivity({
       type: action.type.replace('task/', ''),
       description: `${action.type.replace('task/', '').replace(/[A-Z]/g, letter => ` ${letter.toLowerCase()}`)} task activity`,

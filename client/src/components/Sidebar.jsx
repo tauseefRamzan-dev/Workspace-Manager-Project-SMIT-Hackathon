@@ -76,7 +76,7 @@ function Sidebar() {
           variant="outline-secondary"
           size="sm"
           className="w-100"
-          href="/settings"
+          onClick={() => navigate('/settings')}
         >
           ⚙️ Settings
         </Button>

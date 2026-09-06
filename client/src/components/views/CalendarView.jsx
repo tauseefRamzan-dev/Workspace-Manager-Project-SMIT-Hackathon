@@ -116,6 +116,7 @@ function CalendarView({ tasks }) {
 
       {selectedTask && (
         <TaskModal
+          key={selectedTask.id}
           task={selectedTask}
           show={showModal}
           onHide={() => setShowModal(false)}

@@ -1,7 +1,7 @@
 .navbar-custom {
-  background: rgba(255, 255, 255, 0.88) !important;
+  background: var(--glass-surface) !important;
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--glass-border);
   min-height: 64px;
   position: relative;
   z-index: 1050;
@@ -37,4 +37,11 @@
 .btn-ghost:hover {
   background-color: var(--bg-tertiary);
   border-radius: 8px;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .btn-ghost,
+.navbar-custom .dropdown-toggle {
+  color: var(--text-primary);
 }

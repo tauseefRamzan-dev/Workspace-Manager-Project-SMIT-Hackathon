@@ -42,3 +42,8 @@
   margin-bottom: 4px;
   transition: transform 0.18s ease, background 0.18s ease;
 }
+
+.sidebar .btn-outline-secondary {
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}

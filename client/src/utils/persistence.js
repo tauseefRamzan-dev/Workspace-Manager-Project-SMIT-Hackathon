@@ -170,6 +170,7 @@ export const resetAllData = async () => {
     
     localStorage.removeItem('currentUser');
     localStorage.removeItem('appUI');
+    localStorage.removeItem('appState');
     localStorage.removeItem('theme');
     
     return true;

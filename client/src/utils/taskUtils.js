@@ -14,7 +14,8 @@ export const filterTasks = (tasks, filters) => {
       const hasLabel = filters.labels.some(label => task.labels.includes(label));
       if (!hasLabel) return false;
     }
-    if (filters.dateRange && task.dueDate) {
+    if (filters.dateRange) {
+      if (!task.dueDate) return false;
       const dueDate = new Date(task.dueDate);
       if (dueDate < filters.dateRange.start || dueDate > filters.dateRange.end) {
         return false;

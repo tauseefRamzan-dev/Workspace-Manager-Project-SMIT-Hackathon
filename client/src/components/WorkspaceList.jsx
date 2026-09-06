@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Card, Row, Col, Button } from 'react-bootstrap';
 import { Form as AntForm, Input, Modal } from 'antd';
 import { createWorkspace } from '../store/slices/workspaceSlice';
@@ -7,6 +8,7 @@ import './WorkspaceList.css';
 
 function WorkspaceList() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { workspaces } = useSelector(state => state.workspace);
   const { currentUser } = useSelector(state => state.auth);
   const [open, setOpen] = useState(false);
@@ -68,7 +70,7 @@ function WorkspaceList() {
                     variant="outline-primary"
                     size="sm"
                     className="w-100"
-                    href={`/workspace/${ws.id}`}
+                    onClick={() => navigate(`/workspace/${ws.id}`)}
                   >
                     Open
                   </Button>

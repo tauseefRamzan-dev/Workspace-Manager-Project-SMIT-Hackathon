@@ -87,7 +87,7 @@ function ListView({ projectId, tasks }) {
         <Table hover className="task-table mb-0">
           <thead>
             <tr>
-              <th><input type="checkbox" checked={filtered.length > 0 && filtered.every(task => selectedTasks.includes(task.id))} onChange={() => filtered.forEach(task => { if (!selectedTasks.includes(task.id)) dispatch(toggleTaskSelection(task.id)); })} aria-label="Select visible tasks" /></th>
+              <th><input type="checkbox" checked={filtered.length > 0 && filtered.every(task => selectedTasks.includes(task.id))} onChange={() => { const allSelected = filtered.every(task => selectedTasks.includes(task.id)); filtered.forEach(task => { if (allSelected) { if (selectedTasks.includes(task.id)) dispatch(toggleTaskSelection(task.id)); } else if (!selectedTasks.includes(task.id)) { dispatch(toggleTaskSelection(task.id)); } }); }} aria-label="Select visible tasks" /></th>
               <th>Title</th>
               <th>Status</th>
               <th>Priority</th>
@@ -141,6 +141,7 @@ function ListView({ projectId, tasks }) {
 
       {selectedTask && (
         <TaskModal
+          key={selectedTask.id}
           task={selectedTask}
           show={showModal}
           onHide={() => setShowModal(false)}

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,10 +25,12 @@ import SettingsPage from './pages/SettingsPage';
 
 function App() {
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector(state => state.auth);
+  const { isAuthenticated, currentUser } = useSelector(state => state.auth);
   const { theme } = useSelector(state => state.ui);
   const { tasks } = useSelector(state => state.task);
   const { notifications, preferences } = useSelector(state => state.notification);
+  const [hasSavedUser] = useState(() => Boolean(loadFromLocalStorage('currentUser')));
+  const authHydrated = !hasSavedUser || Boolean(currentUser);
 
   useEffect(() => {
     let unsubscribe;
@@ -68,7 +70,6 @@ function App() {
     if (savedUser) {
       dispatch(hydrateAuth(savedUser));
     }
-
     return () => unsubscribe?.();
   }, [dispatch]);
 
@@ -117,30 +118,30 @@ function App() {
       <Routes>
         <Route 
           path="/login" 
-          element={isAuthenticated ? <Navigate to="/workspace" /> : <LoginPage />}
+          element={!authHydrated ? null : isAuthenticated ? <Navigate to="/workspace" /> : <LoginPage />}
         />
         
         <Route 
           path="/workspace" 
-          element={isAuthenticated ? <DashboardLayout /> : <Navigate to="/login" />}
+          element={!authHydrated ? null : isAuthenticated ? <DashboardLayout /> : <Navigate to="/login" />}
         />
         
         <Route 
           path="/workspace/:workspaceId" 
-          element={isAuthenticated ? <WorkspacePage /> : <Navigate to="/login" />}
+          element={!authHydrated ? null : isAuthenticated ? <WorkspacePage /> : <Navigate to="/login" />}
         />
         
         <Route 
           path="/workspace/:workspaceId/project/:projectId" 
-          element={isAuthenticated ? <ProjectPage /> : <Navigate to="/login" />}
+          element={!authHydrated ? null : isAuthenticated ? <ProjectPage /> : <Navigate to="/login" />}
         />
         
         <Route 
           path="/settings" 
-          element={isAuthenticated ? <SettingsPage /> : <Navigate to="/login" />}
+          element={!authHydrated ? null : isAuthenticated ? <SettingsPage /> : <Navigate to="/login" />}
         />
         
-        <Route path="/" element={<Navigate to={isAuthenticated ? "/workspace" : "/login"} />} />
+        <Route path="/" element={!authHydrated ? null : <Navigate to={isAuthenticated ? "/workspace" : "/login"} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
