@@ -1,0 +1,66 @@
+.list-view {
+  width: 100%;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-table {
+  background-color: var(--bg-primary);
+  min-width: 720px;
+}
+
+.task-table thead {
+  background-color: var(--bg-secondary);
+}
+
+.task-table th {
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px;
+  color: var(--text-primary);
+}
+
+.task-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.task-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.task-title-cell {
+  font-weight: 500;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.assignee-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
+@media (max-width: 768px) {
+  .list-header {
+    justify-content: stretch;
+  }
+
+  .list-header .btn {
+    width: 100%;
+  }
+}

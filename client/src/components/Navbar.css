@@ -1,0 +1,40 @@
+.navbar-custom {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-color);
+  min-height: 64px;
+  position: relative;
+  z-index: 1050;
+}
+
+.navbar-end {
+  margin-left: auto;
+}
+
+.global-search {
+  width: min(28vw, 280px);
+}
+
+@media (max-width: 767px) {
+  .navbar-custom .navbar-brand span {
+    font-size: 0.9rem;
+  }
+}
+
+.avatar-sm {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn-ghost:hover {
+  background-color: var(--bg-tertiary);
+  border-radius: 8px;
+}

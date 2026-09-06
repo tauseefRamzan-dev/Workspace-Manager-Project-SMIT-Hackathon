@@ -1,0 +1,39 @@
+.project-list {
+  min-width: 0;
+}
+
+.project-header h4 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.project-card {
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.project-header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.project-icon {
+  font-size: 28px;
+}
+
+.project-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin: 12px 0;
+}
+
+.empty-state {
+  border: 2px dashed var(--border-color);
+}

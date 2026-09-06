@@ -1,0 +1,72 @@
+.task-modal .modal-header {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.task-modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.section {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+}
+
+.section h6 {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.detail-item {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-item small {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.task-details-card {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  position: sticky;
+  top: 0;
+}
+
+.task-details-card .card-body {
+  padding: 16px;
+}
+
+textarea.form-control {
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+  .task-modal-body {
+    max-height: calc(100vh - 150px);
+    padding: 14px;
+  }
+
+  .task-details-card {
+    position: static;
+    margin-top: 8px;
+  }
+
+  .task-modal .modal-footer {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .task-modal .modal-footer .btn {
+    flex: 1 1 120px;
+  }
+}

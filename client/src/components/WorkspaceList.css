@@ -1,0 +1,33 @@
+.workspace-list {
+  min-width: 0;
+}
+
+.workspace-header h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.workspace-card {
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.workspace-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.workspace-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.workspace-card .card-title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.empty-state {
+  border: 2px dashed var(--border-color);
+}

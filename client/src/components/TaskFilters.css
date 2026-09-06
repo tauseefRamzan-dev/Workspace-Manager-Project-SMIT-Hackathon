@@ -1,0 +1,71 @@
+.task-filters {
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+}
+
+.task-filters .card-body {
+  padding: 16px;
+}
+
+.filters-header {
+  min-width: 0;
+}
+
+.search-input {
+  flex: 1;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.filters-panel {
+  padding: 16px 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.filters-panel h6 {
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.form-check {
+  margin-bottom: 8px;
+}
+
+.form-check-label {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-left: 8px;
+}
+
+@media (max-width: 576px) {
+  .task-filters .card-body {
+    padding: 12px;
+  }
+
+  .filters-header .search-input {
+    flex-basis: 100%;
+    min-height: 42px;
+  }
+
+  .filters-header .btn,
+  .filters-header .form-select {
+    flex: 1 1 auto;
+    min-height: 40px;
+  }
+
+  .filters-panel .row > [class*='col-'] {
+    margin-bottom: 18px;
+  }
+}
